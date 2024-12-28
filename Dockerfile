@@ -2,7 +2,7 @@ FROM almalinux:latest
 MAINTAINER Greg Cockburn
 
 # Update base packages
-RUN dnf update \
+RUN dnf update --assume-yes \
     && dnf upgrade --assume-yes
 
 # Install pre-reqs
