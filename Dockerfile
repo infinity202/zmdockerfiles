@@ -9,9 +9,9 @@ RUN apt update \
 RUN apt install --assume-yes --no-install-recommends gnupg
 
 # Configure Zoneminder PPA
-RUN sudo apt install -y software-properties-common
+RUN apt install -y software-properties-common
 
-RUN sudo add-apt-repository ppa:iconnor/zoneminder-1.36 \
+RUN add-apt-repository ppa:iconnor/zoneminder-1.36 \
     && apt update
 
 # Install zoneminder
