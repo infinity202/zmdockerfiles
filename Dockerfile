@@ -9,8 +9,8 @@ RUN dnf update -y \
 RUN dnf install epel-release -y
 
 # Configure Zoneminder PPA
-RUN dnf install dnf-plugins-core -y
-RUN dnf config-manager --set-enabled powertools -y
+#RUN dnf install dnf-plugins-core -y
+#RUN dnf config-manager --set-enabled powertools -y
 
 RUN dnf install dnf-plugins-core  -y
 
