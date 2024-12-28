@@ -9,8 +9,9 @@ RUN apt update \
 RUN apt install --assume-yes --no-install-recommends gnupg
 
 # Configure Zoneminder PPA
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABE4C7F993453843F0AEB8154D0BF748776FFB04 \
-    && echo deb http://ppa.launchpad.net/iconnor/zoneminder-1.36/ubuntu focal main > /etc/apt/sources.list.d/zoneminder.list \
+RUN sudo apt install -y software-properties-common
+
+RUN sudo add-apt-repository ppa:iconnor/zoneminder-1.36 \
     && apt update
 
 # Install zoneminder
