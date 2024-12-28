@@ -11,13 +11,17 @@ RUN apt install --assume-yes --no-install-recommends gnupg
 # Configure Zoneminder PPA
 RUN apt install -y software-properties-common
 
+RUN apt install -y mysql-server
+
 RUN add-apt-repository ppa:iconnor/zoneminder-1.36 \
     && apt update
 
 # Install zoneminder
 RUN DEBIAN_FRONTEND=noninteractive apt install --assume-yes zoneminder \
     && a2enconf zoneminder \
-    && a2enmod rewrite cgi
+    && a2enmod rewrite headers cgi
+
+RUN systemctl restart apache2
 
 # Setup Volumes
 VOLUME /var/cache/zoneminder/events /var/cache/zoneminder/images /var/lib/mysql /var/log/zm
