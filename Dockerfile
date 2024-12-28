@@ -16,8 +16,8 @@ RUN dnf install dnf-plugins-core  -y
 RUN dnf config-manager --set-enabled crb
 
 # Install zoneminder
-RUN dnf install --nogpgcheck http://zmrepo.zoneminder.com/el/9/x86_64/zmrepo-9-2.el9.noarch.rpm  -y
-RUN dnf install zoneminder  -y
+RUN dnf install zoneminder-httpd -y
+#RUN dnf install zoneminder  -y
 
 #RUN systemctl restart apache2
 
