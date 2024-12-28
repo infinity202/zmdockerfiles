@@ -1,25 +1,23 @@
-FROM ubuntu:20.04
+FROM almalinux:latest
 MAINTAINER Greg Cockburn
 
 # Update base packages
-RUN apt update \
-    && apt upgrade --assume-yes
+RUN dnf update \
+    && dnf upgrade --assume-yes
 
 # Install pre-reqs
-RUN apt install --assume-yes --no-install-recommends gnupg
+RUN dnf install epel-release
 
 # Configure Zoneminder PPA
-RUN apt install -y software-properties-common
+RUN dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
 
-RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server
+RUN dnf install dnf-plugins-core
 
-RUN add-apt-repository ppa:iconnor/zoneminder-1.36 \
-    && apt update
+RUN dnf config-manager --set-enabled crb
 
 # Install zoneminder
-RUN DEBIAN_FRONTEND=noninteractive apt install --assume-yes zoneminder \
-    && a2enconf zoneminder \
-    && a2enmod rewrite headers cgi
+RUN dnf install --nogpgcheck http://zmrepo.zoneminder.com/el/9/x86_64/zmrepo-9-2.el9.noarch.rpm \
+    dnf install zoneminder
 
 #RUN systemctl restart apache2
 
