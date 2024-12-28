@@ -6,18 +6,18 @@ RUN dnf update -y \
     && dnf upgrade -y
 
 # Install pre-reqs
-RUN dnf install epel-release
+RUN dnf install epel-release -y
 
 # Configure Zoneminder PPA
-RUN dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
+RUN dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm  -y
 
-RUN dnf install dnf-plugins-core
+RUN dnf install dnf-plugins-core  -y
 
 RUN dnf config-manager --set-enabled crb
 
 # Install zoneminder
-RUN dnf install --nogpgcheck http://zmrepo.zoneminder.com/el/9/x86_64/zmrepo-9-2.el9.noarch.rpm \
-    dnf install zoneminder
+RUN dnf install --nogpgcheck http://zmrepo.zoneminder.com/el/9/x86_64/zmrepo-9-2.el9.noarch.rpm  -y \
+    dnf install zoneminder  -y
 
 #RUN systemctl restart apache2
 
