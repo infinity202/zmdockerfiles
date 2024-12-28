@@ -2,8 +2,8 @@ FROM almalinux:latest
 MAINTAINER Greg Cockburn
 
 # Update base packages
-RUN dnf update --assume-yes \
-    && dnf upgrade --assume-yes
+RUN dnf update -y \
+    && dnf upgrade -y
 
 # Install pre-reqs
 RUN dnf install epel-release
