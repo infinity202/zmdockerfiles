@@ -9,12 +9,14 @@ RUN dnf update -y \
 RUN dnf install epel-release -y
 
 # Configure Zoneminder PPA
-RUN dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm  -y
+RUN dnf install dnf-plugins-core -y
+RUN dnf config-manager --set-enabled powertools -y
 
 RUN dnf install dnf-plugins-core  -y
 
 RUN dnf config-manager --set-enabled crb
 
+RUN dnf install apache2 mariadb-server -y
 # Install zoneminder
 RUN dnf install zoneminder-httpd -y
 #RUN dnf install zoneminder  -y
