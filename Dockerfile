@@ -16,7 +16,7 @@ RUN dnf install dnf-plugins-core  -y
 
 RUN dnf config-manager --set-enabled crb
 
-RUN dnf install apache2 mariadb-server -y
+RUN dnf install httpd.x86_64 httpd-tools.x86_64 mariadb.x86_64 mariadb-common.x86_64 -y
 # Install zoneminder
 RUN dnf install zoneminder-httpd -y
 #RUN dnf install zoneminder  -y
